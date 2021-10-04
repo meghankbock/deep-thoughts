@@ -2,7 +2,7 @@
   "name": "deep-thoughts",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "dependencies": {
     "dotenv": "^10.0.0"
   },
@@ -11,11 +11,12 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js",
+    "start:prod": "cd server && npm start",
+    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "build": "cd client && npm run build",
     "install": "cd server && npm i && cd ../client && npm i",
-    "seed": "cd server && npm run seed"
+    "seed": "cd server && npm run seed",
+    "heroku-postbuild": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
