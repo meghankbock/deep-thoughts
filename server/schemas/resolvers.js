@@ -19,7 +19,7 @@ const resolvers = {
       const params = username ? { username } : {};
       return Thought.find(params).sort({ createdAt: -1 });
     },
-    thought: async (parent, { username }) => {
+    thought: async (parent, { _id }) => {
       return Thought.findOne({ _id });
     },
     users: async () => {
@@ -94,7 +94,7 @@ const resolvers = {
             return updatedUser;
         }
 
-        throw new AuthenticationError('You need to be logged in');
+        throw new AuthenticationError('You need to be logged in!');
     }
   },
 };
